@@ -103,14 +103,15 @@ namespace GrowattPvOutput.HostedServices
 
             // Lees de data lokaal uit.
             var powerNow = Convert.ToInt32(decimal.Parse(device.Power));
-            var powerTotal = decimal.Parse(device.EToday);
-            Log($"\t\tGot power {powerNow}w ({powerTotal}kWh total)");
+            var powerTotalKwh = decimal.Parse(device.EToday);
+            var powerTotalW = powerTotalKwh * 1000;
+            Log($"\t\tGot power {powerNow}w ({powerTotalW}w total)");
 
             // Verwerk de data naar PVO model.
             var builder = new StatusPostBuilder<IStatusPost>();
             builder
                 .SetTimeStamp(DateTime.Now)
-                .SetGeneration(decimal.ToInt32(powerTotal), powerNow);
+                .SetGeneration(decimal.ToInt32(powerTotalW), powerNow);
 
             // Check if Open Weather Map variables were provided. If so, get temperature.
             if (HasOpenWeatherMapVariablesProvided())
