@@ -10,7 +10,7 @@ When running the docker container, the following environment variables can be pr
 | --- | --- | --- |
 | `GROWATT_USERNAME` | Username for your Growatt account. | Yes |
 | `GROWATT_PASSWORD` | Password for your Growatt account. | Yes |
-| `PVOUTPUT_APIKEY`  | Your PVOutput API Key (on the bottom of [this](https://pvoutput.org/account.jsp) page. | Yes |
+| `PVOUTPUT_APIKEY`  | Your PVOutput API Key (on the bottom of [this](https://pvoutput.org/account.jsp) page). | Yes |
 | `PVOUTPUT_APIKEY`  | Your PVOutput System ID. | Yes |
 | `TZ` | Your local timezone, for reporting time to PVOutput in local time. | No (defaults to GMT) |
 | `OWM_APIKEY` | Your Open Weather Map API key (generate [here](https://home.openweathermap.org/api_keys). | No, but required to send temperature |
