@@ -122,7 +122,7 @@ namespace GrowattPvOutput.HostedServices
 
                 builder = builder.SetTemperature(temp);
             }
-            var a = builder.Build();
+            
             // Build model and send to PVOutput.
             await _pVOutputClient.Status.AddStatusAsync(builder.Build());
 
