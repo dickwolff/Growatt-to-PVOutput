@@ -28,7 +28,7 @@ namespace GrowattPvOutput.HostedServices
 
             _pVOutputClient = new PVOutputClient(pvOutputApiKey, pvOutputSystemId);
 
-            // Get sleep interval, or fallback to 60 seconds.            
+            // Get sleep interval, or fallback to 150 seconds.            
             GetSleepTimeout(out var sleepIntervalSeconds, out var timeout);
 
             while (true)
@@ -53,7 +53,7 @@ namespace GrowattPvOutput.HostedServices
 
         private static void GetSleepTimeout(out string sleepIntervalSeconds, out int timeout)
         {
-            sleepIntervalSeconds = Environment.GetEnvironmentVariable("SLEEP_INTERVAL_SECONDS") ?? "60";
+            sleepIntervalSeconds = Environment.GetEnvironmentVariable("SLEEP_INTERVAL_SECONDS") ?? "150";
             var timespan = TimeSpan.FromSeconds(int.Parse(sleepIntervalSeconds));
             timeout = int.Parse($"{timespan.TotalMilliseconds}");
         }
