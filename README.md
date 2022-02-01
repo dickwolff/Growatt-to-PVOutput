@@ -2,6 +2,8 @@
 
 This service allows you to export data from the Growatt Server to PVOutput, while also adding temperature data to the status.
 
+This service retrieves data from Growatt's API, instead of bridging your Growatt logger to post data to a local device.
+
 I copied the sources from [Ealse.Growatt.Api](https://github.com/ealse/GrowattApi) and modified the `DeviceStatus` property on the `Device` class, changing the type from `int` to `string`. This caused an serialization error while retrieving data.
 
 # Run in Docker 
