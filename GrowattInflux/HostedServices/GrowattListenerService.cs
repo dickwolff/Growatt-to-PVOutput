@@ -40,6 +40,13 @@ namespace GrowattInflux.HostedServices
                     Log($"Error! {ex.Message}");
                     Log(ex.StackTrace);
                     Log("--------------------------------");
+
+                    // If it's a Growatt API error, create a new session.
+                    if (ex.StackTrace.Contains("Ealse.Growatt"))
+                    {
+                        Log("Reconnecting to Growatt");
+                        _growattClient = new Session(gwUsername, gwPassword);
+                    }
                 }
 
                 // Wait n seconds before running again.
